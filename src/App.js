@@ -21,7 +21,7 @@ const App = () => {
 
   //Fetch tasks
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks')
+    const res = await fetch('https://my-json-server.typicode.com/CobyBoy/React-Task-Tracker/tasks')
     const data = await res.json();
     return data
   }
