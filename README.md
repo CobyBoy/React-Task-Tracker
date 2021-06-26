@@ -12,4 +12,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `npm run server` 
 to start JSON Server
 
-## TODO: Refactor (on dev branch)/ Netlify doesn't work because of JSON Server, how to deploy correctly?
+## TODO: Refactor (on dev branch)
