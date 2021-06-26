@@ -6,18 +6,23 @@ export const AddTask = ({onAdd}) => {
     const [text, setText] = useState('');
     const [day, setDay] = useState('');
     const [reminder, setReminder] = useState(false);
+    
     const onSubmit = (e) => {
         e.preventDefault();
-        if (!text) {
-            toast.error("Please add a task", { position: toast.POSITION.BOTTOM_CENTER });
+        if (!text || !day) {
+            toast.error("Please complete all fields", { position: toast.POSITION.BOTTOM_CENTER });
             return
         }
-            onAdd({ text, day, reminder })
-
-            setText('');
-            setDay('');
-            setReminder(false);
+        onAdd({ text, day, reminder })
+        clearFields();
     }
+
+    const clearFields = () => {
+        setText('');
+        setDay('');
+        setReminder(false);
+    }
+
     return (
         <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control'>
@@ -26,7 +31,7 @@ export const AddTask = ({onAdd}) => {
             </div>
             <div className='form-control'>
                 <label>Day & Time</label>
-                <input type='text' placeholder='Add Day and time' value={day} onChange={(e) => { setDay(e.target.value) }}/>
+                <input type='date' placeholder='Add Day and time' value={day} onChange={(e) => { setDay(e.target.value) }}/>
             </div>
             <div className='form-control from-control-check'>
                 <label>Set reminder</label>
