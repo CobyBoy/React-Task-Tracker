@@ -1,4 +1,6 @@
-import {useState} from 'react'
+import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AddTask = ({onAdd}) => {
     const [text, setText] = useState('');
@@ -7,7 +9,7 @@ export const AddTask = ({onAdd}) => {
     const onSubmit = (e) => {
         e.preventDefault();
         if (!text) {
-            alert('please add task')
+            toast.error("Please add a task", { position: toast.POSITION.BOTTOM_CENTER });
             return
         }
             onAdd({ text, day, reminder })
@@ -30,7 +32,8 @@ export const AddTask = ({onAdd}) => {
                 <label>Set reminder</label>
                 <input type='checkbox'checked = {reminder} onChange={(e) => { setReminder(e.currentTarget.checked) }}/>
             </div>
-            <input type='submit' className='btn btn-block' value='Save Task'/>
+            <input type='submit' className='btn btn-block' value='Save Task' />
         </form>
+       
     )
 }
